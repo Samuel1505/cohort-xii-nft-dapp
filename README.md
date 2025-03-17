@@ -26,7 +26,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/your-repo/nft-dapp.git
+git clone https://github.com/Samuel1505/cohort-xii-dapp.git
 cd nft-dapp
 ```
 
