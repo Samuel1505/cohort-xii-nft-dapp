@@ -1,7 +1,84 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #386344;
-    --color-secondary: #fff;
-    --color-tertiary: #99bc9f;
+  /* Rich, modern color palette */
+  --color-primary: #2a4e3c;      /* Deeper forest green */
+  --color-primary-light: #3a6550; /* Lighter green for hover states */
+  --color-secondary: #ffffff;     /* Clean white for backgrounds */
+  --color-tertiary: #8ab892;      /* Softer green for accents */
+  --color-accent: #f5ca7b;        /* Warm gold accent color */
+  --color-text-primary: #293542;  /* Deep slate for main text */
+  --color-text-secondary: #5c6b7a; /* Medium slate for secondary text */
+  --color-card-bg: #f7faf8;       /* Very light green tint for cards */
+  --color-success: #38a169;       /* Green for success notifications */
+  --color-error: #e53e3e;         /* Red for errors */
+  
+  /* Main font */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Add these classes to your tailwind CSS */
+@layer components {
+  .app-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .page-header {
+    @apply py-6 mb-8 border-b border-tertiary/30;
+  }
+  
+  .page-title {
+    @apply text-3xl font-bold text-primary;
+  }
+  
+  .page-subtitle {
+    @apply text-lg text-text-secondary mt-2;
+  }
+  
+  .section-header {
+    @apply text-xl font-bold text-primary mb-6 pb-2 border-b border-tertiary/40;
+  }
+  
+  .card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-secondary hover:bg-primary-light shadow-sm hover:shadow;
+  }
+  
+  .btn-secondary {
+    @apply bg-tertiary/30 text-primary hover:bg-tertiary/40;
+  }
+  
+  .tab {
+    @apply px-4 py-2 font-medium border-b-2 transition-colors duration-200;
+  }
+  
+  .tab-active {
+    @apply border-primary text-primary;
+  }
+  
+  .tab-inactive {
+    @apply border-transparent text-text-secondary hover:text-text-primary hover:border-tertiary/50;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2 rounded-md border border-tertiary/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors duration-200;
+  }
+}
+
+/* Optional dark mode if you want to support it */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-secondary: #1a2128;
+    --color-tertiary: #567a5c;
+    --color-card-bg: #293542;
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #cbd5e1;
+  }
 }

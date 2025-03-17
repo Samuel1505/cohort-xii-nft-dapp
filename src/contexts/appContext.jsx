@@ -76,6 +76,33 @@ export const AppProvider = ({ children }) => {
             .catch((error) => console.error("error: ", error));
     }, [baseTokenURI, maxSupply]);
 
+    useEffect(() => {
+        const contract = new Contract(
+            import.meta.env.VITE_NFT_CONTRACT_ADDRESS,
+            NFT_ABI,
+            getReadOnlyProvider()
+        );
+
+
+        const listenToMintEvent = (Minter, nftTokenId) => {
+            console.log(`The minter is ${Minter} and the NFT id is ${nftTokenId}`);
+            
+
+        }
+
+        
+        contract
+        .nextTokenId()
+        .then((id) => setNextTokenId(id))
+        .catch((error) => console.error("error: ", error));
+        
+        contract.on("Minted", listenToMintEvent);
+
+        return () => {
+            contract.off("Minted", listenToMintEvent)
+        }
+    }, []);
+
     return (
         <appContext.Provider
             value={{
